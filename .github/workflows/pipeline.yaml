@@ -22,3 +22,14 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Send Telegram Notification
+        uses: appleboy/telegram-action@master
+        if: success()
+        with:
+          to: '1140495322'
+          token: '8410565854:AAFuInzWvf9gYiR_J6_OLvikie0NM8DAcdU'
+          message: |
+            ✅ Билд успешен!
+            Проект: ${{ github.repository }}
+            Автор: ${{ github.actor }}
